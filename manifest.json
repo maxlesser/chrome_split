@@ -5,6 +5,11 @@
   "description": "This extension demonstrates a browser action with kittens.",
   "version": "1.0",
 
+  "omnibox": { "keyword" : "<<", "keyword" : ">>" },
+  "icons": {
+    "16": "16-full-color.png"
+  },
+
   "permissions": [
     "https://secure.flickr.com/"
   ],
