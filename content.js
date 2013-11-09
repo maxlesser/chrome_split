@@ -22,7 +22,8 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + "' style='display:none'></img>" + allImages[x].outerHTML + "</div>");
+	$(allImages[x]).replaceWith("<div style='float:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
+		"' style='display:none; z-index:1000; background:none; -webkit-box-shadow:none; box-shadow:none'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
@@ -36,16 +37,20 @@ for (x = 0; x < allImages.length; x += 1)
 				var cur = data.images[0].replace(/\ /g, '%20');
 				document.getElementById(cur).style.display = 'inline-block';
 				document.getElementById(cur).style.position = 'absolute';
-				document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
+				var ratioX = $('img[src="' + cur + '"]')[0].width / data.photos[0].width;
+				var ratioY = $('img[src="' + cur + '"]')[0].height / data.photos[0].height;
+				console.log($('img[src="' + cur + '"]'));
+				console.log(ratioX);
+				console.log(ratioY);
 
-				var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * 3;
+				var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * ratioX * 3;
 
 				document.getElementById(cur).style.width = width + "px";
-				var XVALUE = data.photos[0].tags[0].mouth_center.x;
-				var mouthAvgX = (data.photos[0].tags[0].mouth_center.x + data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 3;
-				var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3;
-				var YVALUE = data.photos[0].tags[0].nose.y;
+				var XVALUE = data.photos[0].tags[0].mouth_center.x * ratioX;
+				var mouthAvgX = (data.photos[0].tags[0].mouth_center.x + data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 3 * ratioX;
+				var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
+				var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 				document.getElementById(cur).style.marginLeft =  (mouthAvgX - (width/2)) + "px";
 
 				document.getElementById(cur).style.marginTop = YVALUE + "px";
