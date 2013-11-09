@@ -23,7 +23,7 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + "' style='display:none'></img>" + allImages[x].outerHTML + "</div>");
+	$(allImages[x]).replaceWith("<div style='float:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + "' style='display:none'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
