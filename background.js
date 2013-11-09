@@ -1,4 +1,4 @@
-chrome.omnibox.onInputEntered.addListener(function callback)
-{
-  window.location.href = callback.
-}
+chrome.omnibox.onInputEntered.addListener(
+  function(text) {
+    alert('You just typed "' + text + '"');
+  });
