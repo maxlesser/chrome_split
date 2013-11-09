@@ -27,7 +27,7 @@ for (x = 0; x < allImages.length; x += 1)
 				var height = data.photos[0].height*(width/data.photos[0].width);
 				document.getElementById(cur).style.width = width;
 				var XVALUE = data.photos[0].tags[0].mouth_center.x - (width/2);
-				var YVALUE = data.photos[0].tags[0].mouth_center.y -height/3;
+				var YVALUE = data.photos[0].tags[0].mouth_center.y -height/2;
 				document.getElementById(cur).style.marginLeft = -data.photos[0].width + XVALUE;
 				document.getElementById(cur).style.marginTop = YVALUE;
 
