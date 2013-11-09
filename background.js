@@ -3,7 +3,7 @@
 
 var allImages = $( "img" );
 var x;
-alert('yo');
+//alert('yo');
 console.log("werk");
 for (x = 0; x < allImages.length; x += 1)
 {
@@ -20,9 +20,12 @@ for (x = 0; x < allImages.length; x += 1)
 		dataType: 'json',
 		success: function(data) 
 		{ 
+			console.log(data);
+			console.log(data.photos[0].height.tags)
+			
 			//console.log(imagay);
 			//imagay.replaceWith("<div>Kappi is amazing</div>");
-			console.log($(allImages[x]));
+			//console.log($(allImages[x]));
 		},
 		error: function() { alert('sadness!'); },
 		beforeSend: setHeader
