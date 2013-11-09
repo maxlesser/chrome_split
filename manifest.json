@@ -1,11 +1,14 @@
 {
   "manifest_version": 2,
 
-  "name": "Split",
-  "description": "Allows you to view two pages within a single tab.",
+  "name": "Monopolize",
+  "description": "Moustaches. Moustaches everywhere.",
   "version": "1.0",
 
-  "omnibox": { "keyword" : "split" },
+  "browser_action": {
+    "default_icon": "moustachify.png"
+   },
+
   "background": {
     "persistent": true,
     "scripts": ["background.js"]

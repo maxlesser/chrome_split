@@ -1,7 +1,4 @@
-chrome.omnibox.onInputEntered.addListener(
+chrome.browserAction.onClicked.addListener(
   function(text) {
-    alert('You just typed "' + text + '"');
+    alert('You just moustached.');
   });
-
-chrome.omnibox.setDefaultSuggestion(
-	{description: 'DESCRIPTION?!?'});
