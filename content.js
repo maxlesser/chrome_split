@@ -32,7 +32,7 @@ for (x = 0; x < allImages.length; x += 1)
 		success: function(data) 
 		{ 
 			console.log(data);
-			if (if data.photos && data.photos[0] && data.photos[0].tags.length != 0){
+			if (data.photos && data.photos[0] && data.photos[0].tags.length != 0){
 				console.log("successful detection of mustache");
 				var cur = data.images[0].replace(/\ /g, '%20');
 
@@ -41,8 +41,12 @@ for (x = 0; x < allImages.length; x += 1)
 					document.getElementById(cur).style.position = 'absolute';
 					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
-					var ratioX = $('img[src="' + cur + '"]')[0].width / data.photos[0].width;
-					var ratioY = $('img[src="' + cur + '"]')[0].height / data.photos[0].height;
+					var actualImage = $('img[src="' + cur + '"]');
+					if (!actualImage) {
+						return;
+					}
+					var ratioX = actual[0].width / data.photos[0].width;
+					var ratioY = actual[0].height / data.photos[0].height;
 					console.log($('img[src="' + cur + '"]'));
 					console.log(ratioX);
 					console.log(ratioY);
