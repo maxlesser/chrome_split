@@ -9,7 +9,7 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/256/Subculture-Mustache-icon.png' id='" + allImages[x].src + "'></img></div>");
+	$(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + "'></img></div>");
 	document.getElementById(allImages[x].src).style.display = 'none';
 
 	$.ajax({
