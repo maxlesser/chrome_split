@@ -9,7 +9,7 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='https://h-gvineyards.com/wp-content/uploads/2013/10/moustache_png_by_tatidebieber-d56bqe2.png' id='" + allImages[x].src + "'></img></div>");
+	$(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/256/Subculture-Mustache-icon.png' id='" + allImages[x].src + "'></img></div>");
 	document.getElementById(allImages[x].src).style.display = 'none';
 
 	$.ajax({
@@ -21,6 +21,9 @@ for (x = 0; x < allImages.length; x += 1)
 			if (data.photos[0].tags.length != 0){
 				console.log("SUCCESSS BITCHES");
 				document.getElementById(data.images[0]).style.display = 'inline-block';
+				document.getElementById(data.images[0]).style.position = 'absolute';
+				document.getElementById(data.images[0]).style.marginLeft = -data.photos[0].width;
+
 				//$('#' + data.images[0].src);
 			}
 			//if (data.photos[0].tags)
