@@ -21,11 +21,11 @@ for (x = 0; x < allImages.length; x += 1)
 				document.getElementById(cur).style.display = 'inline-block';
 				document.getElementById(cur).style.position = 'absolute';
 				document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
-				var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * 3;
+				var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * 3.5;
 				var height = data.photos[0].height*(width/data.photos[0].width);
 				document.getElementById(cur).style.width = width + "px";
 				var XVALUE = data.photos[0].tags[0].mouth_center.x - (width/2);
-				var YVALUE = data.photos[0].tags[0].mouth_center.y -height/4;
+				var YVALUE = data.photos[0].tags[0].mouth_center.y -height/3;
 				document.getElementById(cur).style.marginLeft = -data.photos[0].width + XVALUE + "px";
 				document.getElementById(cur).style.marginTop = YVALUE + "px";
 			}
