@@ -42,7 +42,7 @@ for (x = 0; x < allImages.length; x += 1)
 					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
 					var actualImage = $('img[src="' + cur + '"]');
-					if (!actualImage) {
+					if (!actualImage[0]) {
 						return;
 					}
 					var ratioX = actualImage[0].width / data.photos[0].width;
