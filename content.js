@@ -23,7 +23,7 @@ for (x = 0; x < allImages.length; x += 1)
 
 	// put a mustache image here
 	$(allImages[x]).replaceWith("<div style='float:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
-		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; box-shadow:none; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
+		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; box-shadow:none; height:auto; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
