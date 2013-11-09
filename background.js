@@ -14,8 +14,11 @@ for (x = 0; x < allImages.length; x += 1)
 
 
 	 // put a mustache image here
-	 $(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img hidden='true' src='' id='" + allImages[x].src + "'></img></div>");
-	
+	 $(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='https://h-gvineyards.com/wp-content/uploads/2013/10/moustache_png_by_tatidebieber-d56bqe2.png' id='" + allImages[x].src + "'></img></div>");
+		var test = "#" + allImages[x].src;
+		console.log(test);
+		$(test).hide();
+
 	$.ajax({
 		url: request,
 		type: 'GET',
@@ -25,7 +28,13 @@ for (x = 0; x < allImages.length; x += 1)
 
 			// the mustache we need to move based on data
 			var mustache = $('#' + data.images[0].src);
-
+			console.log(data.photos[0].tags);
+			if (data.photos[0].tags.length != 0){
+				console.log("SUCCESSS BITCHES");
+				console.log($('#' + data.images[0].src));
+				//$('#' + data.images[0].src);
+			}
+			//if (data.photos[0].tags)
 			// get location of the face from data
 			// move mustache if there is any face data
 			// set hidden to false
