@@ -21,8 +21,9 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div style='float:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
-		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; box-shadow:none; height:auto; width:auto; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
+	$(allImages[x]).replaceWith("<div style='float:left; text-align:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
+		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; " + 
+		"text-align: left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
@@ -41,17 +42,17 @@ for (x = 0; x < allImages.length; x += 1)
 					var actualImage = $('img[src="' + data.images[0] + '"]');
 					if (!actualImage[0]) {
 						actualImage = $('img[src="' + data.images[0].replace("http:", "") + '"]');
-						//console.log("returning here");
-						//return;
+						if(!actualImage[0])
+							return;
 					}
 
 					document.getElementById(cur).style.display = 'inline-block';
 					document.getElementById(cur).style.position = 'absolute';
 					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
+					console.log(actualImage);
 					var ratioX = actualImage[0].width / data.photos[0].width;
 					var ratioY = actualImage[0].height / data.photos[0].height;
-					console.log($('img[src="' + cur + '"]'));
 					console.log(ratioX);
 					console.log(ratioY);
 
