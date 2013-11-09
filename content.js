@@ -1,9 +1,14 @@
 
-var el = document.getElementsByClassName('photoPageNextNav');
-el.item(0).addEventListener("click", sexypants, false);
+	var el = document.getElementsByClassName('photoPageNextNav');
+	if (el.item(0) != null){
+		el.item(0).addEventListener("click", sexypants, false);
+	}
+	
 
-var el2 = document.getElementsByClassName('photoPagePrevNav');
-el2.item(0).addEventListener("click", sexypants, false);
+	var el2 = document.getElementsByClassName('photoPagePrevNav');
+	if (el2.item(0) != null){
+		el2.item(0).addEventListener("click", sexypants, false);
+	}
 
 sexypants();
 
