@@ -45,8 +45,8 @@ for (x = 0; x < allImages.length; x += 1)
 					if (!actualImage) {
 						return;
 					}
-					var ratioX = actual[0].width / data.photos[0].width;
-					var ratioY = actual[0].height / data.photos[0].height;
+					var ratioX = actualImage[0].width / data.photos[0].width;
+					var ratioY = actualImage[0].height / data.photos[0].height;
 					console.log($('img[src="' + cur + '"]'));
 					console.log(ratioX);
 					console.log(ratioY);
