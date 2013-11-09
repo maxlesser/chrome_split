@@ -32,11 +32,14 @@ for (x = 0; x < allImages.length; x += 1)
 		success: function(data) 
 		{ 
 				console.log(data);
-			if (data.photos[0].tags.length != 0){
+			if (data.photos[0] && data.photos[0].tags.length != 0){
 				console.log("successful detection of mustache");
 				var cur = data.images[0].replace(/\ /g, '%20');
-				document.getElementById(cur).style.display = 'inline-block';
-				document.getElementById(cur).style.position = 'absolute';
+
+				if (document.getElementById(cur)) {
+					document.getElementById(cur).style.display = 'inline-block';
+					document.getElementById(cur).style.position = 'absolute';
+					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
 				var ratioX = $('img[src="' + cur + '"]')[0].width / data.photos[0].width;
 				var ratioY = $('img[src="' + cur + '"]')[0].height / data.photos[0].height;
@@ -53,7 +56,8 @@ for (x = 0; x < allImages.length; x += 1)
 				var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 				document.getElementById(cur).style.marginLeft =  (mouthAvgX - (width/2)) + "px";
 
-				document.getElementById(cur).style.marginTop = YVALUE + "px";
+					document.getElementById(cur).style.marginTop = YVALUE + "px";
+				}
 			}
 		},
 		error: function() {  },
