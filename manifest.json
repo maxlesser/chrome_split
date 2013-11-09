@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Stache-ism",
-  "description": "A way of life. A way of being.",
+  "description": "A way of being. A way of life.",
   "version": "1.0",
   "permissions": [
     "tabs", "http://*/*", "storage"
