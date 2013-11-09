@@ -1,8 +1,5 @@
 
-chrome.browserAction.onClicked.addListener(
-  function(text) {
-    alert('You just moustached.');
-  });
+
 
 var allImages = $( "img" );
 var x;
@@ -26,3 +23,7 @@ for (x = 0; x < allImages.length; x += 1)
 		xhr.setRequestHeader('X-Mashape-Authorization', 'E4SntsExPG3lTSYKunjBQmVMJIbMtHFc');
 	}
 }
+chrome.browserAction.onClicked.addListener(
+  function(text) {
+    alert('You just moustached.');
+  });
