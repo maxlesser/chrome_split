@@ -15,9 +15,6 @@ for (x = 0; x < allImages.length; x += 1)
 
 	 // put a mustache image here
 	 $(allImages[x]).replaceWith("<div>" + allImages[x].outerHTML + "<img src='https://h-gvineyards.com/wp-content/uploads/2013/10/moustache_png_by_tatidebieber-d56bqe2.png' id='" + allImages[x].src + "'></img></div>");
-		var test = "#" + allImages[x].src;
-		console.log(test);
-		$(test).hide();
 
 	$.ajax({
 		url: request,
