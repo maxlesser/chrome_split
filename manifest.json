@@ -1,21 +1,23 @@
 {
   "manifest_version": 2,
 
-  "name": "Monopolize",
-  "description": "Moustaches. Moustaches everywhere.",
+  "name": "Stache-ism",
+  "description": "A way of life. A way of being.",
   "version": "1.0",
   "permissions": [
-    "tabs", "http://*/*"
+    "tabs", "http://*/*", "storage"
   ],
 
   "browser_action": {
-    "default_icon": "moustachify.png"
+    "default_icon": "moustachify.png",
+    "default_title": "Stache-ism",
+    "default_popup": "popup.html"
    },
 
-  // "background": {
-  //   "persistent": true,
-  //   "scripts": ["content.js"]
-  // },
+   "background": {
+     "persistent": true,
+     "scripts": ["background.js"]
+   },
 
   // "background": {
   //   "scripts": ["reload.js"],

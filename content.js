@@ -10,10 +10,15 @@
 		el2.item(0).addEventListener("click", sexypants, false);
 	}
 
-sexypants();
+chrome.runtime.sendMessage({method: "getLocalStorage"}, sexypants);
 
-
-function sexypants(){
+function sexypants(isDisabled){
+	// alert("GOT CALLED BITCH");
+	alert("sexypants is disabled?" + isDisabled);
+	if (isDisabled) {
+		console.log("NOPE");
+		return;
+	}
 	var allImages = $( "img" );
 	var x;
 
