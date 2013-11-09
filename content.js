@@ -32,7 +32,7 @@ for (x = 0; x < allImages.length; x += 1)
 		success: function(data) 
 		{ 
 			console.log(data);
-			if (data.photos[0] && data.photos[0].tags.length != 0){
+			if (if data.photos && data.photos[0] && data.photos[0].tags.length != 0){
 				console.log("successful detection of mustache");
 				var cur = data.images[0].replace(/\ /g, '%20');
 
