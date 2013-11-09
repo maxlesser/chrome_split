@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "One-click Kittens",
-  "description": "This extension demonstrates a browser action with kittens.",
+  "name": "Split",
+  "description": "Allows you to view two pages within a single tab.",
   "version": "1.0",
 
   "omnibox": { "keyword" : "split" },
