@@ -58,6 +58,7 @@ for (x = 0; x < allImages.length; x += 1)
 
 					var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * ratioX * 3;
 
+					//document.getElementById(cur).style.height = width / (data.photos[0].tags[0].width) * (data.photos[0].tags[0].height * ratioY) + "px";
 					document.getElementById(cur).style.width = width + "px";
 					var mouthAvgX = (data.photos[0].tags[0].mouth_center.x + data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 3 * ratioX;
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
