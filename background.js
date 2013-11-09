@@ -3,17 +3,26 @@
 
 var allImages = $( "img" );
 var x;
+alert('yo');
+console.log("werk");
 for (x = 0; x < allImages.length; x += 1)
 {
-	$(allImages[x]).replaceWith( "<div>Kappi is amazing</div>" );
+	
+	 //$(allImages[x]).replaceWith( "<div>Kappi xxx is amazing</div>" );
+	 //console.log(allImages[x].src);
+	 var imagay = allImages[x];
+	 var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
+	 
 	
 	$.ajax({
-		url: "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=http%3A%2F%2Fwww.lambdal.com%2Ftest2.jpg",
+		url: request,
 		type: 'GET',
 		dataType: 'json',
 		success: function(data) 
 		{ 
-			alert('hello!'); 
+			//console.log(imagay);
+			//imagay.replaceWith("<div>Kappi is amazing</div>");
+			console.log($(allImages[x]));
 		},
 		error: function() { alert('sadness!'); },
 		beforeSend: setHeader
