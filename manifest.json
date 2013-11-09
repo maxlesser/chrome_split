@@ -12,10 +12,15 @@
     "default_icon": "moustachify.png"
    },
 
-  "background": {
-    "persistent": true,
-    "scripts": ["content.js"]
-  },
+  // "background": {
+  //   "persistent": true,
+  //   "scripts": ["content.js"]
+  // },
+
+  // "background": {
+  //   "scripts": ["reload.js"],
+  //   "persistent": true
+  // },
 
   "content_scripts": [
     {
