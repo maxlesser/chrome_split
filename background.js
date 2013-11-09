@@ -23,6 +23,11 @@ for (x = 0; x < allImages.length; x += 1)
 				document.getElementById(data.images[0]).style.display = 'inline-block';
 				document.getElementById(data.images[0]).style.position = 'absolute';
 				document.getElementById(data.images[0]).style.marginLeft = -data.photos[0].width;
+				var width = data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x;
+				var height = data.photos[0].height*(width/data.photos[0].width);
+				document.getElementById(data.images[0]).style.width = width * 1.5;
+
+				document.getElementById(data.images[0]).style.marginTop = "150px"
 
 				//$('#' + data.images[0].src);
 			}
