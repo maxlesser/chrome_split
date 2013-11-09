@@ -1,13 +1,15 @@
 {
   "manifest_version": 2,
-
-  "name": "One-click Kittens",
-  "description": "This extension demonstrates a browser action with kittens.",
+  "name": "My extension",
   "version": "1.0",
-
-  "omnibox": { "keyword" : "split" },
-  "background": {
-    "persistent": true,
-    "scripts": ["background.js"]
-  }
+  "permissions": [
+    "tabs", "http://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jquery-2.0.3.min.js", "background.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
