@@ -4,6 +4,9 @@
   "name": "Monopolize",
   "description": "Moustaches. Moustaches everywhere.",
   "version": "1.0",
+  "permissions": [
+    "tabs", "http://*/*"
+  ],
 
   "browser_action": {
     "default_icon": "moustachify.png"
@@ -12,5 +15,13 @@
   "background": {
     "persistent": true,
     "scripts": ["background.js"]
-  }
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jquery-2.0.3.min.js", "background.js"],
+      "run_at": "document_end"
+    }
+  ]
 }
