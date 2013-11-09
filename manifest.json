@@ -10,7 +10,7 @@
 
   "browser_action": {
     "default_icon": "moustachify.png",
-    "default_title": "Stache-ism",
+    "default_title": "Stache-ism"
     // "default_popup": "popup.html"
    },
 
