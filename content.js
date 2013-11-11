@@ -19,7 +19,7 @@ function sexypants(isDisabled){
 
 	var allImages = $( "img" );
 
-	allImages += $("div:has(img)");
+	//allImages += $("div:has(img)");
 
 	var x;
 
