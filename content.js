@@ -13,6 +13,9 @@
 chrome.extension.sendMessage({method: "getLocalStorage"}, sexypants);
 
 function sexypants(isDisabled){
+	if(document.domain == 'www.youtube.com')
+		return;
+
 	if (isDisabled) {
 		return;
 	}
@@ -22,9 +25,12 @@ function sexypants(isDisabled){
 	//allImages += $("div:has(img)");
 
 	var x;
-
+console.log(allImages.length);
 for (x = 0; x < allImages.length; x += 1)
 {
+	if(allImages[x].width < 35 || allImages[x].height < 35)
+		continue;
+
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
@@ -39,7 +45,7 @@ for (x = 0; x < allImages.length; x += 1)
 		success: function(data) 
 		{ 
 			if (data.photos && data.photos[0] && data.photos[0].tags.length != 0){
-				//console.log("successful detection of mustache");
+				console.log("successful detection of mustache");
 				//console.log(data.images[0]);
 				var cur = data.images[0].replace(/\ /g, '%20');
 				//console.log(data.images[0]);
@@ -55,8 +61,8 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvg = (data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 2;
 					var eyeAvg = (data.photos[0].tags[0].eye_left.x + data.photos[0].tags[0].eye_right.x) / 2;
 					var mouthDiff = Math.abs(data.photos[0].tags[0].mouth_left.x - data.photos[0].tags[0].mouth_right.x);
-					console.log(Math.abs(mouthAvg - eyeAvg));
-					console.log(mouthDiff);
+					//console.log(Math.abs(mouthAvg - eyeAvg));
+					//console.log(mouthDiff);
 
 					if(Math.abs(mouthAvg - eyeAvg) > mouthDiff/5)
 					{
