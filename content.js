@@ -18,6 +18,9 @@ function sexypants(isDisabled){
 	}
 
 	var allImages = $( "img" );
+
+	allImages += $("div:has(img)");
+
 	var x;
 
 for (x = 0; x < allImages.length; x += 1)
