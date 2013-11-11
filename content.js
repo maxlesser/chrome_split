@@ -35,12 +35,11 @@ for (x = 0; x < allImages.length; x += 1)
 		dataType: 'json',
 		success: function(data) 
 		{ 
-			console.log(data);
 			if (data.photos && data.photos[0] && data.photos[0].tags.length != 0){
-				console.log("successful detection of mustache");
-				console.log(data.images[0]);
+				//console.log("successful detection of mustache");
+				//console.log(data.images[0]);
 				var cur = data.images[0].replace(/\ /g, '%20');
-				console.log(data.images[0]);
+				//console.log(data.images[0]);
 
 				if (document.getElementById(cur)) {
 					var actualImage = $('img[src="' + data.images[0] + '"]');
@@ -50,15 +49,21 @@ for (x = 0; x < allImages.length; x += 1)
 							return;
 					}
 
+					var slantedMouth = data.photos[0].tags[0].mouth_left.y - data.photos[0].tags[0].mouth_right.y;
+					console.log(data);
+					console.log(slantedMouth);
+					if(slantedMouth > 10 || slantedMouth < -10)
+						return;
+
 					document.getElementById(cur).style.display = 'inline-block';
 					document.getElementById(cur).style.position = 'absolute';
 					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
-					console.log(actualImage);
+					//console.log(actualImage);
 					var ratioX = actualImage[0].width / data.photos[0].width;
 					var ratioY = actualImage[0].height / data.photos[0].height;
-					console.log(ratioX);
-					console.log(ratioY);
+					//console.log(ratioX);
+					//console.log(ratioY);
 
 					var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * ratioX * 3;
 
@@ -77,7 +82,7 @@ for (x = 0; x < allImages.length; x += 1)
 	});
 
 	function setHeader(xhr) {
-		xhr.setRequestHeader('X-Mashape-Authorization', 'E4SntsExPG3lTSYKunjBQmVMJIbMtHFc');
+		xhr.setRequestHeader('X-Mashape-Authorization', 'XeUhzwVKif8G2DoVGhDuJ791hTW9bBxC');
 	}
 }
 
