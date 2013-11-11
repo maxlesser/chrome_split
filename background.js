@@ -1,13 +1,14 @@
 
 
-chrome.extension.onRequest.addListener(function(request, sendResponse) {
-    if (request.method == "getLocalStorage") {
-    	chrome.storage.local.get('stache-disabled', function(result){
-        	sendResponse(result.stache-disabled);
+chrome.extension.onMessage.addListener(function(message, sender, sendResponse) {
+    if (message.method == "getLocalStorage") {
+    	chrome.storage.local.get('stache', function(result){
+        	sendResponse(result.stache);
     	});
-    } else if (request.method == "setLocalStorage") {
-    	chrome.storage.local.set({'stache-disabled': request.isDisabled});
+    } else if (message.method == "setLocalStorage") {
+    	chrome.storage.local.set({'stache': message.isDisabled});
 	} else {
       sendResponse(false); // snub them.
     }
+    return true;
 });
