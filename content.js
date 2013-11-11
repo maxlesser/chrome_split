@@ -68,9 +68,6 @@ for (x = 0; x < allImages.length; x += 1)
 					{
 						return;
 					}
-
-					document.getElementById(cur).style.display = 'inline-block';
-					document.getElementById(cur).style.position = 'absolute';
 					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
 					//console.log(actualImage);
@@ -85,9 +82,15 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvgX = (data.photos[0].tags[0].mouth_center.x + data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 3 * ratioX;
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
 					var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
-					document.getElementById(cur).style.marginLeft =  (mouthAvgX - (width/2)) + "px";
 
+					document.getElementById(cur).style.marginLeft =  (mouthAvgX - (width/2)) + "px";
 					document.getElementById(cur).style.marginTop = YVALUE + "px";
+
+					if(YVALUE > actualImage[0].height || (mouthAvgX - (width/2)) > actualImage[0].width || YVALUE < 0 || (mouthAvgX - (width/2)) < 0)
+						return;
+
+					document.getElementById(cur).style.display = 'inline-block';
+					document.getElementById(cur).style.position = 'absolute';
 				}
 			}
 		},
