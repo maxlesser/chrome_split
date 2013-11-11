@@ -1,34 +1,23 @@
+chrome.extension.sendMessage({method: "getState"}, setState);
+
+function setState(state) {
+  var text;
+  if (state) {
+    text = "disabled";
+  } else {
+    text = "enabled";
+  }
+  document.getElementById("state").innerHTML = text;
+}
 
 var enableButton = document.getElementById("enable");
 enableButton.addEventListener("click", function() {
-  chrome.extension.sendMessage({method: "setLocalStorage", isDisabled: false});
+  chrome.extension.sendMessage({method: "setState", isDisabled: false});
+  window.close();
 });
 
 var disableButton = document.getElementById("disable");
 disableButton.addEventListener("click", function() { 
-  chrome.extension.sendMessage({method: "setLocalStorage", isDisabled: true});
+  chrome.extension.sendMessage({method: "setState", isDisabled: true});
+  window.close();
 });
-
-
-// if(enableButton.addEventListener){
-//          enableButton.addEventListener("click", function() { alert("alert");});
-//     } else {
-//          enableButton.attachEvent("click", function() { alert("alert");});
-//     };
-// };
-
-// console.log("done");
-
-// enableStaches: function() {
-  
-//   alert("enabling");
-//   console.log("enabling");
-//   chrome.runtime.sendMessage({method: "setLocalStorage", isDisabled: false});
-// };
-
-// disableStaches: function() {
-  
-//   alert("enabling");
-//   console.log("enabling");
-//   chrome.runtime.sendMessage({method: "setLocalStorage", isDisabled: true});
-// };

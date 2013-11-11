@@ -10,7 +10,7 @@
 		el2.item(0).addEventListener("click", sexypants, false);
 	}
 
-chrome.extension.sendMessage({method: "getLocalStorage"}, sexypants);
+chrome.extension.sendMessage({method: "getState"}, sexypants);
 
 function sexypants(isDisabled){
 	if(document.domain == 'www.youtube.com')
