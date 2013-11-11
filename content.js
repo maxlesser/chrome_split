@@ -25,9 +25,9 @@ for (x = 0; x < allImages.length; x += 1)
 	var request = "https://lambda-face-detection-and-recognition.p.mashape.com/detect?images=" + allImages[x].src;
 
 	// put a mustache image here
-	$(allImages[x]).replaceWith("<div style='float:left; text-align:left'><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
+	$(allImages[x]).replaceWith("<div><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
 		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; " + 
-		"text-align: left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
+		"text-align: left; float:left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
@@ -48,12 +48,16 @@ for (x = 0; x < allImages.length; x += 1)
 						if(!actualImage[0])
 							return;
 					}
+					
+					var mouthAvg = (data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 2;
+					var eyeAvg = (data.photos[0].tags[0].eye_left.x + data.photos[0].tags[0].eye_right.x) / 2;
+					var mouthDiff = Math.abs(data.photos[0].tags[0].mouth_left.x - data.photos[0].tags[0].mouth_right.x);
+					console.log(mouthDiff);
 
-					var slantedMouth = data.photos[0].tags[0].mouth_left.y - data.photos[0].tags[0].mouth_right.y;
-					console.log(data);
-					console.log(slantedMouth);
-					if(slantedMouth > 10 || slantedMouth < -10)
+					if(Math.abs(mouthAvg - eyeAvg) > mouthDiff)
+					{
 						return;
+					}
 
 					document.getElementById(cur).style.display = 'inline-block';
 					document.getElementById(cur).style.position = 'absolute';
