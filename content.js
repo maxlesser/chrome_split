@@ -30,7 +30,7 @@ for (x = 0; x < allImages.length; x += 1)
 	// put a mustache image here
 	$(allImages[x]).replaceWith("<div><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
 		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; " + 
-		"text-align: left; float:left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
+		"text-align:left; float:left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
@@ -55,9 +55,10 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvg = (data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 2;
 					var eyeAvg = (data.photos[0].tags[0].eye_left.x + data.photos[0].tags[0].eye_right.x) / 2;
 					var mouthDiff = Math.abs(data.photos[0].tags[0].mouth_left.x - data.photos[0].tags[0].mouth_right.x);
+					console.log(Math.abs(mouthAvg - eyeAvg));
 					console.log(mouthDiff);
 
-					if(Math.abs(mouthAvg - eyeAvg) > mouthDiff)
+					if(Math.abs(mouthAvg - eyeAvg) > mouthDiff/5)
 					{
 						return;
 					}
