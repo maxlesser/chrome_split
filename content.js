@@ -25,7 +25,7 @@ function sexypants(isDisabled){
 	//allImages += $("div:has(img)");
 
 	var x;
-console.log(allImages.length);
+//console.log(allImages.length);
 for (x = 0; x < allImages.length; x += 1)
 {
 	if(allImages[x].width < 35 || allImages[x].height < 35)
@@ -45,7 +45,8 @@ for (x = 0; x < allImages.length; x += 1)
 		success: function(data) 
 		{ 
 			if (data.photos && data.photos[0] && data.photos[0].tags.length != 0){
-				console.log("successful detection of mustache");
+				//console.log("successful detection of mustache");
+				//console.log(data.photos[0].tags[0].confidence);
 				//console.log(data.images[0]);
 				var cur = data.images[0].replace(/\ /g, '%20');
 				//console.log(data.images[0]);
@@ -76,6 +77,12 @@ for (x = 0; x < allImages.length; x += 1)
 					//console.log(ratioX);
 					//console.log(ratioY);
 
+					// checks if the image has some css moving it around in any way
+					var actualImageTop = actualImage.css('top').replace(/px/g, '');
+					var actualImageLeft = actualImage.css('left').replace(/px/g, '');
+					var actualImageBottom = actualImage.css('right').replace(/px/g, '');
+					var actualImageRight = actualImage.css('bottom').replace(/px/g, '');
+
 					var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * ratioX * 3;
 
 					document.getElementById(cur).style.width = width + "px";
@@ -83,6 +90,15 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
 					var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 
+					if($.isNumeric(actualImageLeft))
+						mouthAvgX = mouthAvgX + parseInt(actualImageLeft);
+					if($.isNumeric(actualImageRight))
+						mouthAvgX = mouthAvgX - parseInt(actualImageRight);
+					if($.isNumeric(actualImageTop))
+						YVALUE = YVALUE + parseInt(actualImageTop);
+					if($.isNumeric(actualImageBottom))
+						YVALUE = YVALUE - parseInt(actualImageBottom);
+					
 					document.getElementById(cur).style.marginLeft =  (mouthAvgX - (width/2)) + "px";
 					document.getElementById(cur).style.marginTop = YVALUE + "px";
 
