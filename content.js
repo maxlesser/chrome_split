@@ -36,7 +36,7 @@ for (x = 0; x < allImages.length; x += 1)
 	// put a mustache image here
 	$(allImages[x]).replaceWith("<div><img src='http://i.imgur.com/FoyEVvt.png' id='" + allImages[x].src + 
 		"' style='display:none; z-index:1000; background:none; border:none; -webkit-box-shadow:none; " + 
-		"text-align:left; float:left; box-shadow:none; height:auto; width:auto; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
+		"text-align:left; float:left; box-shadow:none; height:auto; width:0; min-width:0px; min-height:0px'></img>" + allImages[x].outerHTML + "</div>");
 
 	$.ajax({
 		url: request,
@@ -90,9 +90,9 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
 					var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 
-
-					// need to find a way to not place the mustache or place it correctly if theres left/right auto
-
+					// this will just not show the mustache if it would be screwed up, but I think we can figure out how to display it correctly
+					if(actualImageTop == 'auto' || actualImageLeft == 'auto')
+						return;
 					
 					if($.isNumeric(actualImageLeft))
 						mouthAvgX = mouthAvgX + parseInt(actualImageLeft);
