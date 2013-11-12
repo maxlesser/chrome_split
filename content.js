@@ -58,6 +58,9 @@ for (x = 0; x < allImages.length; x += 1)
 						if(!actualImage[0])
 							return;
 					}
+
+					actualImage.css('margin-left', '0px');
+					actualImage.css('margin-top', '0px');
 					
 					var mouthAvg = (data.photos[0].tags[0].mouth_left.x + data.photos[0].tags[0].mouth_right.x) / 2;
 					var eyeAvg = (data.photos[0].tags[0].eye_left.x + data.photos[0].tags[0].eye_right.x) / 2;
@@ -69,19 +72,12 @@ for (x = 0; x < allImages.length; x += 1)
 					{
 						return;
 					}
-					document.getElementById(cur).style.marginLeft = -data.photos[0].width + "px";
 
 					//console.log(actualImage);
 					var ratioX = actualImage[0].width / data.photos[0].width;
 					var ratioY = actualImage[0].height / data.photos[0].height;
 					//console.log(ratioX);
 					//console.log(ratioY);
-
-					// checks if the image has some css moving it around in any way
-					var actualImageTop = actualImage.css('top').replace(/px/g, '');
-					var actualImageLeft = actualImage.css('left').replace(/px/g, '');
-					var actualImageBottom = actualImage.css('right').replace(/px/g, '');
-					var actualImageRight = actualImage.css('bottom').replace(/px/g, '');
 
 					var width = (data.photos[0].tags[0].mouth_right.x - data.photos[0].tags[0].mouth_left.x) * ratioX * 3;
 
@@ -90,10 +86,12 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
 					var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 
-					// this will just not show the mustache if it would be screwed up, but I think we can figure out how to display it correctly
-					if(actualImageTop == 'auto' || actualImageLeft == 'auto')
-						return;
-					
+					// checks if the image has some css moving it around in any way
+					var actualImageTop = actualImage.css('top').replace(/px/g, '');
+					var actualImageLeft = actualImage.css('left').replace(/px/g, '');
+					var actualImageBottom = actualImage.css('right').replace(/px/g, '');
+					var actualImageRight = actualImage.css('bottom').replace(/px/g, '');
+
 					if($.isNumeric(actualImageLeft))
 						mouthAvgX = mouthAvgX + parseInt(actualImageLeft);
 					if($.isNumeric(actualImageRight))
