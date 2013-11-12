@@ -90,6 +90,10 @@ for (x = 0; x < allImages.length; x += 1)
 					var mouthAvgY = (data.photos[0].tags[0].mouth_center.y + data.photos[0].tags[0].mouth_left.y + data.photos[0].tags[0].mouth_right.y) / 3 * ratioY;
 					var YVALUE = data.photos[0].tags[0].nose.y * ratioY;
 
+
+					// need to find a way to not place the mustache or place it correctly if theres left/right auto
+
+					
 					if($.isNumeric(actualImageLeft))
 						mouthAvgX = mouthAvgX + parseInt(actualImageLeft);
 					if($.isNumeric(actualImageRight))
